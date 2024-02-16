@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
 
       728: {
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 24,
       },
 
@@ -43,21 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let prevArrow = document.querySelectorAll('.bp-collections-nav__prev')
   let nextArrow = document.querySelectorAll('.bp-collections-nav__next')
 
-  /*const swiperTabs = new Swiper('[data-tabs-swiper]', {
-    loop: false,
-    slidesPerView: 'auto',
-    allowTouchMove: false,
-    spaceBetween: 80,
-    mousewheel: true,
-    slideToClickedSlide: true,
-    centeredSlides: false,
-    navigation: {
-      nextEl: '.bp-collections-nav__next',
-      prevEl: '.bp-collections-nav__prev',
-    }
-  });
-*/
-
   swiperTabsContainers.forEach(function (element, index) {
     let swiper = new Swiper(element, {
       loop: false,
@@ -68,18 +53,33 @@ document.addEventListener("DOMContentLoaded", () => {
       slideToClickedSlide: true,
       centeredSlides: false,
 
+      breakpoints: {
+        // when window width is >= 320px
+        320: {
+          spaceBetween: 30,
+        },
+
+        728: {
+          spaceBetween: 60,
+        },
+
+        1200: {
+          spaceBetween: 80,
+        },
+
+      },
+
       navigation: {
         nextEl: nextArrow[index],
         prevEl: prevArrow[index],
       },
+
 
     });
   });
 
 
   const swiperCollectionContainers = document.querySelectorAll('[data-collection-swiper]');
-  //let prevArrow = document.querySelectorAll('.bp-collections-nav__prev')
-  //let nextArrow = document.querySelectorAll('.bp-collections-nav__next')
 
   swiperCollectionContainers.forEach(function (element, index) {
     let swiper = new Swiper(element, {
@@ -87,20 +87,15 @@ document.addEventListener("DOMContentLoaded", () => {
       autoplay: true,
       speed: 300,
 
-      /*navigation: {
-        nextEl: nextArrow[index],
-        prevEl: prevArrow[index],
-      },*/
-
       breakpoints: {
         // when window width is >= 320px
         320: {
-          slidesPerView: 1,
-          spaceBetween: 0,
+          slidesPerView: 2,
+          spaceBetween: 16,
         },
 
         728: {
-          slidesPerView: 2,
+          slidesPerView: 3,
           spaceBetween: 24,
         },
 
@@ -111,7 +106,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
-
 
 });
