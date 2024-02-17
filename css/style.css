@@ -1061,12 +1061,13 @@
   }
 
   .bp-decor-line {
-    height: 200px;
+    height: 320px;
   }
 
   .bp-decor-line::before {
     height: 100%;
     background-size: cover;
+    z-index: 10;
   }
 
   .bp-collections-nav {
@@ -1129,6 +1130,7 @@
 @media (max-width: 1200px) {
   .bp-selection {
     padding: 48px 0 180px 0;
+    margin-top: -100px;
   }
 }
 

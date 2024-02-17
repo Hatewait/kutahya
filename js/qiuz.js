@@ -5,6 +5,7 @@ const quizSlides = document.querySelectorAll('[data-quiz-slide]');
 const quizSlidesAmount = quizSlides.length;
 const quizRadioElements = document.querySelectorAll('[data-quiz-elem]');
 const slideInputs = quizContainer.querySelectorAll('input');
+const deliveryInputs = quizContainer.querySelectorAll('[data-delivery]');
 
 const resultElements = document.querySelectorAll('[data-quiz-result]');
 const resultButtonsContainer = document.querySelector('[data-result-buttons]');
@@ -39,6 +40,9 @@ const resetState = () => {
   state.selectedItems = {}
 }
 
+const resetDeliveryInputs = () => {
+  deliveryInputs.forEach((input) => input.value = '');
+}
 
 const hideElement = (el) => el.classList.add('d-none');
 const showElement = (el) => el.classList.remove('d-none');
@@ -47,7 +51,8 @@ const showElement = (el) => el.classList.remove('d-none');
 const startQuiz = () => {
   showElement(quizContainer);
   showElement(quizSlides[0]);
-  hideElement(buttonBack)
+  hideElement(buttonBack);
+  resetDeliveryInputs();
 
   for (let i = 1; i < quizSlides.length; i++) {
     hideElement(quizSlides[i]);
@@ -59,20 +64,33 @@ startQuiz();
 resultElements.forEach((slide) => hideElement(slide))
 hideElement(resultButtonsContainer);
 
-const checkSelectedRadio = () => {
+const toggleDisabledAttr = () => {
   if (!state.isSelected) {
+    console.log('state is true from toggleAttr')
     buttonNext.setAttribute('disabled', 'disabled');
     buttonNext.classList.add('btn-disabled');
   } else {
+    console.log('state is false from toggleAttr')
     buttonNext.removeAttribute('disabled');
     buttonNext.classList.remove('btn-disabled');
   }
 }
 
-checkSelectedRadio();
+toggleDisabledAttr();
 
+const validateDeliveryInputs = () => {
+  deliveryInputs.forEach((input) => {
+    input.addEventListener('input', (e) => {
+      if (input.value !== '') {
+        state.isSelected = true;
+        toggleDisabledAttr()
+        console.log('text-inputs', state.isSelected)
+      }
+    })
+  })
+}
 
-const selectInput = (currentSlide, currentInput) => {
+const setSelectedItemsIdOnState = (currentSlide, currentInput) => {
   const id = currentSlide.getAttribute('id');
   state.selectedItems[`step_${id}`] = currentInput.value;
 }
@@ -81,22 +99,28 @@ const removeCheckedClass = () => {
   quizRadioElements.forEach((slide) => slide.classList.remove('checked'));
 }
 
-slideInputs.forEach((input) => {
-  input.addEventListener('change', (e) => {
-    const currentInput = e.target;
-    const currentSlide = currentInput.closest('[data-quiz-slide]');
-    const currentRadioElement = currentInput.closest('[data-quiz-elem]');
-    if (currentInput.checked) {
-      state.isSelected = true;
-      checkSelectedRadio();
-      selectInput(currentSlide, currentInput);
-      removeCheckedClass();
-      currentRadioElement.classList.add('checked');
-      console.log(state.selectedItems)
-    }
+const controlRadioInputs = () => {
+  state.isSelected = false;
+  console.log('controlRadioInputs', state.isSelected)
+  slideInputs.forEach((input) => {
+    input.checked = false;
+    input.addEventListener('change', (e) => {
+      const currentInput = e.target;
+      const currentSlide = currentInput.closest('[data-quiz-slide]');
+      const currentRadioElement = currentInput.closest('[data-quiz-elem]');
+      if (currentInput.checked) {
+        state.isSelected = true;
+        toggleDisabledAttr();
+        setSelectedItemsIdOnState(currentSlide, currentInput);
+        removeCheckedClass();
+        currentRadioElement.classList.add('checked');
+        console.log(state.selectedItems)
+      }
+    })
   })
-})
+}
 
+controlRadioInputs();
 
 const showResult = () => {
   const arrFromRes = Object.values(state.selectedItems);
@@ -161,16 +185,19 @@ const toggleButtons = () => {
 
 
 buttonNext.addEventListener('click', () => {
-  checkSelectedRadio();
+  controlRadioInputs();
+  validateDeliveryInputs();
+  toggleDisabledAttr();
   showNextSlide();
   toggleButtons();
-
-  //console.log('kekekek')
 })
 
 buttonBack.addEventListener('click', () => {
-  showPrevSlide();
   toggleButtons();
+  controlRadioInputs();
+  resetDeliveryInputs();
+  toggleDisabledAttr();
+  showPrevSlide();
 })
 
 restartQuizButton.addEventListener('click', () => {
