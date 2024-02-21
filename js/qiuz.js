@@ -20,7 +20,7 @@ const result = {
   pera: ['cafe', 'restoran', 'hotel', 'europe', 'asian', 'west', 'mix', 'other', 'small', 'neitral', 'no-matter'],
   crouton: ['restoran', 'europe', 'middle', 'mix', 'neitral'],
   chef_taste_of: ['cafe', 'restoran', 'hotel', 'europe', 'asian', 'west', 'mix', 'other', 'middle', 'big', 'no-matter', 'neitral'],
-  blue_stone: ['cafe', 'restoran', 'asian', 'europe', 'west', 'mix', 'small', 'middle', 'big', 'bright'],
+  blue_stone: ['cafe', 'restoran', 'hotel', 'asian', 'europe', 'west', 'mix', 'small', 'middle', 'big', 'bright'],
   sand_wind: ['cafe', 'restoran', 'middle', 'big', 'europe', 'asian', 'west', 'mix', 'other', 'bright']
 }
 
@@ -33,11 +33,16 @@ let state = {
   selectedItems: {}
 }
 
+let deliveryState = {
+  selectedValues: {}
+}
+
 const resetState = () => {
   state.currentSlideIndex = 1;
   state.currentSlideId = quizSlides[0].getAttribute('id');
   state.isSelected = false;
   state.selectedItems = {}
+  deliveryState.selectedValues = {}
 }
 
 const resetDeliveryInputs = () => {
@@ -66,11 +71,10 @@ hideElement(resultButtonsContainer);
 
 const toggleDisabledAttr = () => {
   if (!state.isSelected) {
-    console.log('state is true from toggleAttr')
+    //console.log('state is true from toggleAttr')
     buttonNext.setAttribute('disabled', 'disabled');
     buttonNext.classList.add('btn-disabled');
   } else {
-    console.log('state is false from toggleAttr')
     buttonNext.removeAttribute('disabled');
     buttonNext.classList.remove('btn-disabled');
   }
@@ -78,19 +82,8 @@ const toggleDisabledAttr = () => {
 
 toggleDisabledAttr();
 
-const validateDeliveryInputs = () => {
-  deliveryInputs.forEach((input) => {
-    input.addEventListener('input', (e) => {
-      if (input.value !== '') {
-        state.isSelected = true;
-        toggleDisabledAttr()
-        console.log('text-inputs', state.isSelected)
-      }
-    })
-  })
-}
 
-const setSelectedItemsIdOnState = (currentSlide, currentInput) => {
+const setSelectedItemsIdToState = (currentSlide, currentInput) => {
   const id = currentSlide.getAttribute('id');
   state.selectedItems[`step_${id}`] = currentInput.value;
 }
@@ -99,9 +92,23 @@ const removeCheckedClass = () => {
   quizRadioElements.forEach((slide) => slide.classList.remove('checked'));
 }
 
+
+const validateDeliveryInputs = () => {
+  deliveryInputs.forEach((input) => {
+    input.addEventListener('change', (e) => {
+      const currentInput = e.target;
+      if (input.value !== '') {
+        state.isSelected = true;
+        toggleDisabledAttr();
+        const id = currentInput.getAttribute('id');
+        deliveryState.selectedValues[`step_${id}`] = currentInput.value;
+      }
+    })
+  })
+}
+
 const controlRadioInputs = () => {
   state.isSelected = false;
-  console.log('controlRadioInputs', state.isSelected)
   slideInputs.forEach((input) => {
     input.checked = false;
     input.addEventListener('change', (e) => {
@@ -111,10 +118,10 @@ const controlRadioInputs = () => {
       if (currentInput.checked) {
         state.isSelected = true;
         toggleDisabledAttr();
-        setSelectedItemsIdOnState(currentSlide, currentInput);
+        setSelectedItemsIdToState(currentSlide, currentInput);
         removeCheckedClass();
         currentRadioElement.classList.add('checked');
-        console.log(state.selectedItems)
+
       }
     })
   })
@@ -142,7 +149,9 @@ const showResult = () => {
     }
   })
 
-  console.log(collectionToShow)
+  console.log('result collection:', collectionToShow);
+  console.log('results from each slide:', state.selectedItems);
+  console.log('results from delivery slide:', deliveryState.selectedValues)
 }
 
 
