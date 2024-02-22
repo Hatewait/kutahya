@@ -354,6 +354,10 @@
     order: -1;
   }
 
+  .bp-action-block_unic .bp-button {
+    padding: 32px 20px;
+  }
+
   .bp-action-block__descr {
     max-width: 100%;
   }
@@ -677,6 +681,7 @@
   .bp-history__video {
     max-width: 100%;
     border-radius: 80px;
+    height: auto;
   }
 
   .bp-history__video video {
@@ -920,6 +925,10 @@
   .bp-features__item:nth-child(even) {
     border-left: 2px solid var(--main-color);
   }
+
+  .bp-features__item:nth-child(7) {
+    border-bottom: 0;
+  }
 }
 
 /* bp-consult */
@@ -974,6 +983,10 @@
 
 .bp-collections__tab {
   position: relative;
+}
+
+.bp-collections__tab-btn {
+  color: var(--main-color);
 }
 
 .bp-collections__tab-btn.tab-btn-active {
@@ -1439,6 +1452,12 @@
 
   .bp-quiz__result-info {
     gap: 16px;
+  }
+}
+
+@media (max-width: 410px) {
+  .bp-quiz__grid-elem-name {
+    max-width: 200px;
   }
 }
 

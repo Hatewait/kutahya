@@ -18,7 +18,7 @@ const result = {
   teos: ['cafe', 'hotel', 'europe', 'mix', 'middle', 'small', 'big', 'bright'],
   tan: ['restoran', 'europe', 'asian', 'mix', 'big', 'neitral'],
   pera: ['cafe', 'restoran', 'hotel', 'europe', 'asian', 'west', 'mix', 'other', 'small', 'neitral', 'no-matter'],
-  crouton: ['restoran', 'europe', 'middle', 'mix', 'neitral'],
+  crouton: ['restoran', 'hotel', 'europe', 'middle', 'small', 'mix', 'other', 'neitral', 'bright'],
   chef_taste_of: ['cafe', 'restoran', 'hotel', 'europe', 'asian', 'west', 'mix', 'other', 'middle', 'big', 'no-matter', 'neitral'],
   blue_stone: ['cafe', 'restoran', 'hotel', 'asian', 'europe', 'west', 'mix', 'small', 'middle', 'big', 'bright'],
   sand_wind: ['cafe', 'restoran', 'middle', 'big', 'europe', 'asian', 'west', 'mix', 'other', 'bright']
