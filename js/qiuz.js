@@ -14,7 +14,7 @@ const restartQuizButton = document.querySelector('[data-quiz-restart]');
 const resultLinkButton = document.querySelector('[data-quiz-details]');
 
 const result = {
-  blue_blanc: ['cafe', 'restoran', 'west', 'middle', 'small', 'big', 'bright'],
+  blue_blanc: ['cafe', 'restoran', 'west', 'other', 'middle', 'small', 'big', 'bright'],
   teos: ['cafe', 'hotel', 'europe', 'mix', 'middle', 'small', 'big', 'bright'],
   tan: ['restoran', 'europe', 'asian', 'mix', 'big', 'neitral'],
   pera: ['cafe', 'restoran', 'hotel', 'europe', 'asian', 'west', 'mix', 'other', 'small', 'neitral', 'no-matter'],
@@ -47,6 +47,7 @@ const resetState = () => {
 
 const resetDeliveryInputs = () => {
   deliveryInputs.forEach((input) => input.value = '');
+  deliveryInputs.forEach(input => input.classList.remove('invalid'));
 }
 
 const hideElement = (el) => el.classList.add('d-none');
@@ -71,7 +72,6 @@ hideElement(resultButtonsContainer);
 
 const toggleDisabledAttr = () => {
   if (!state.isSelected) {
-    //console.log('state is true from toggleAttr')
     buttonNext.setAttribute('disabled', 'disabled');
     buttonNext.classList.add('btn-disabled');
   } else {
@@ -82,7 +82,6 @@ const toggleDisabledAttr = () => {
 
 toggleDisabledAttr();
 
-
 const setSelectedItemsIdToState = (currentSlide, currentInput) => {
   const id = currentSlide.getAttribute('id');
   state.selectedItems[`step_${id}`] = currentInput.value;
@@ -92,17 +91,32 @@ const removeCheckedClass = () => {
   quizRadioElements.forEach((slide) => slide.classList.remove('checked'));
 }
 
+const validateDeliveryInputs = (currentInput) => {
+  const isValid = [...deliveryInputs].every(input => input.value !== '');
+  const invalidInputs = [...deliveryInputs].filter(input => input.value === '');
 
-const validateDeliveryInputs = () => {
+  if (!isValid) {
+    state.isSelected = false;
+    invalidInputs.forEach(input => input.classList.add('invalid'));
+    toggleDisabledAttr();
+  } else {
+    state.isSelected = true;
+    if (invalidInputs.length === 0) {
+      [...deliveryInputs].forEach(input => input.classList.remove('invalid'));
+    }
+    invalidInputs.forEach(input => input.classList.remove('invalid'));
+    toggleDisabledAttr();
+  }
+}
+
+
+const controlDeliveryInputs = () => {
   deliveryInputs.forEach((input) => {
-    input.addEventListener('change', (e) => {
+    input.addEventListener('input', (e) => {
       const currentInput = e.target;
-      if (input.value !== '') {
-        state.isSelected = true;
-        toggleDisabledAttr();
-        const id = currentInput.getAttribute('id');
-        deliveryState.selectedValues[`step_${id}`] = currentInput.value;
-      }
+      validateDeliveryInputs(currentInput);
+      const id = currentInput.getAttribute('id');
+      deliveryState.selectedValues[`step_${id}`] = currentInput.value;
     })
   })
 }
@@ -149,9 +163,9 @@ const showResult = () => {
     }
   })
 
-  console.log('result collection:', collectionToShow);
-  console.log('results from each slide:', state.selectedItems);
-  console.log('results from delivery slide:', deliveryState.selectedValues)
+  console.log('коллекция результат:', collectionToShow);
+  console.log('результаты по каждому слайду:', state.selectedItems);
+  console.log('результаты со слайда количество и город:', deliveryState.selectedValues)
 }
 
 
@@ -184,6 +198,12 @@ const showPrevSlide = () => {
 
 }
 
+const hideButtonBack = () => {
+  if (state.currentSlideIndex === 1) {
+    hideElement(buttonBack);
+  }
+}
+
 const toggleButtons = () => {
   if (state.currentSlideIndex > 1) {
     showElement(buttonBack)
@@ -192,10 +212,9 @@ const toggleButtons = () => {
   }
 }
 
-
 buttonNext.addEventListener('click', () => {
   controlRadioInputs();
-  validateDeliveryInputs();
+  controlDeliveryInputs();
   toggleDisabledAttr();
   showNextSlide();
   toggleButtons();
@@ -207,6 +226,7 @@ buttonBack.addEventListener('click', () => {
   resetDeliveryInputs();
   toggleDisabledAttr();
   showPrevSlide();
+  hideButtonBack();
 })
 
 restartQuizButton.addEventListener('click', () => {

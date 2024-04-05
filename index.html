@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta name="format-detection" content="telephone=yes">
   <title>Профессиональная посуда из фарфора</title>
   <link rel="stylesheet" href="css/base.css">
@@ -23,7 +24,7 @@
       <div class="bp-welcome__group">
         <div class="bp-welcome__descr xs-offset">
           <h1 class="headline-1 title-offset">Профессиональная посуда из фарфора</h1>
-          <p>для ресторанов, кафе, баров</p>
+          <p>для ресторанов, кафе, баров по лучшим ценам от поставщика</p>
         </div>
         <div class="bp-welcome__buttons">
           <a href="#collection" class="bp-button">
@@ -57,13 +58,13 @@
               <img src="./img/intro-slider/pic-3.png" alt="">
             </div>
             <div class="swiper-slide bp-intro__slide">
-              <img src="./img/intro-slider/pic-1.png" alt="">
+              <img src="./img/intro-slider/pic-4.png" alt="">
             </div>
             <div class="swiper-slide bp-intro__slide">
-              <img src="./img/intro-slider/pic-2.png" alt="">
+              <img src="./img/intro-slider/pic-5.png" alt="">
             </div>
             <div class="swiper-slide bp-intro__slide">
-              <img src="./img/intro-slider/pic-3.png" alt="">
+              <img src="./img/intro-slider/pic-6.png" alt="">
             </div>
           </div>
         </div>
@@ -109,7 +110,7 @@
       </div>
     </div>
   </section>
-  <div class="wrapper">
+  <div class="wrapper wrapper-p0">
     <section class="bp-solution bp-action-block">
       <div class="bp-solution__countries">
         <h3 class="headline-3 title-offset-lg">Идеальное решение для вашего бизнеса</h3>
@@ -140,7 +141,7 @@
     <div class="wrapper">
       <div class="bp-features__top medium-offset">
         <div class="bp-features__top-text">
-          <h2 class="headline-2 h2-offset">Преимущества форфора Kutahya</h2>
+          <h2 class="headline-2 h2-offset">Преимущества фарфора Kutahya</h2>
           <p>Kutahya - правильный выбор для вашего заведения в сфере HoReCa</p>
         </div>
         <img class="bp-features__top-pic" src="./img/feature-face.png" alt="">
@@ -199,11 +200,13 @@
         </div>
         <div class="bp-features__item bp-features__item_empty">
           <img src="./img/advantage2.jpg" alt="">
+          <img class="decor-star__pic decor-star__pic-3" src="./img/icons/end-star.svg" alt="">
+          <img class="decor-star__pic decor-star__pic-4" src="./img/icons/end-star.svg" alt="">
         </div>
       </div>
     </div>
   </section>
-  <div class="wrapper">
+  <div class="wrapper wrapper-p0">
     <section class="bp-consult bp-action-block">
       <div class="bp-consult__img-wrap">
         <img src="./img/povar.png" alt="">
@@ -224,7 +227,9 @@
         <h2 id="collection" class="headline-2 h2-offset">BONE COLLECTION</h2>
         <p class="bp-collections__descr medium-offset">Коллекция, включающая в себя несколько линеек белого теплого оттенка, пользующихся особой популярностью в известных на весь мир отелях премиум класса.</p>
         <div class="bp-collections__tab tab" id="tab-1">
+          <!-- tab buttons -->
           <div class="bp-collections__nav tab-nav xs-offset">
+            <!-- swiper buttons -->
             <button class="bp-collections-nav bp-collections-nav__prev" type="button" data-prev>
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8 24L7.29289 23.2929L6.58579 24L7.29289 24.7071L8 24ZM38 25C38.5523 25 39 24.5523 39 24C39 23.4477 38.5523 23 38 23V25ZM19.2929 11.2929L7.29289 23.2929L8.70711 24.7071L20.7071 12.7071L19.2929 11.2929ZM7.29289 24.7071L19.2929 36.7071L20.7071 35.2929L8.70711 23.2929L7.29289 24.7071ZM8 25H38V23H8V25Z"
@@ -608,22 +613,40 @@
   <div class="wrapper wrapper-p0">
     <section class="bp-action-block bp-action-block_unic">
       <div class="bp-action-block__descr">
-        <h3 class="headline-3 h3-offset">Уникальность и разнообразие</h3>
-        <p class="xs-offset">Уникальная посуда, которая украсит любое блюдо. Выбирайте подходящую коллекцию и оформляйте заказ уже сейчас</p>
+        <h3 class="headline-3 h3-offset">Получить каталог Kutahya</h3>
 
-        <a href="#" class="bp-button">Посмотреть все Х линеек</a>
+        <form action="" class="bp-form">
+          <div class="bp-form__fieldset xs-offset">
+            <input type="email" placeholder="Email" name="email" class="bp-from__input bp-input" minlength="3" required>
+            <input type="tel" placeholder="Телефон" name="tel" class="bp-from__input bp-input" minlength="3" required>
+            <label class="bp-form__agreement custom-checkbox" for="checkbox">
+              <input id="checkbox" type="checkbox" required checked>
+              <span class="alternative-fs">Нажимая кнопку «Отправить», я даю свое согласие на обработку моих персональных данных, в соответствии с Федеральным законом от 27.07.2006 года №152-ФЗ</span>
+            </label>
+          </div>
+
+          <button class="btn-reset bp-button" type="submit">Отправить каталог</button>
+
+        </form>
       </div>
       <div class="bp-action-block__img-wrap">
-        <img src="./img/unic.png" alt="Уникальность и разнообразие">
+        <div class="bp-action-block__cat-link">
+          <img class="bp-action-block__img-def" src="./img/cat.jpg" alt="каталог Kutahya">
+          <img class="bp-action-block__img-hov" src="./img/hover-cat.jpg" alt="каталог Kutahya">
+        </div>
+
       </div>
     </section>
   </div>
   <section class="bp-decor-line"></section>
+
+  <!-- quiz section -->
   <section class="bp-selection bg-decor">
     <div class="wrapper">
       <h2 class="headline-2 h2-offset">Подобрать линейку</h2>
       <p class="bp-selection__welcome-text xs-offset">Не можете определиться с линейкой, подходящей именно вашему ресторану? Наш квиз поможет вам с выбором</p>
 
+      <!-- quiz questions -->
       <div class="bp-selection__quiz bp-quiz" data-quiz-container>
         <div id="type" class="bp-quiz__grid xs-offset animate__animated animate__fadeIn" data-quiz-slide>
           <div class="bp-quiz__grid-elem bp-quiz__title decor-star">
@@ -888,6 +911,7 @@
                    type="number"
                    placeholder="0"
                    value="0"
+                   min="1"
                    data-delivery
                    data-amount>
             <img class="decor-star__pic decor-star__pic-1" src="./img/icons/end-star.svg" alt="">
@@ -920,10 +944,12 @@
         </div>
       </div>
 
+      <!-- quiz results -->
+      <!-- ссылку на каждую коллекцию нужно прописать в дата атрибут data-collection-src -->
       <div class="bp-selection__quiz bp-quiz bp-selection__quiz_results" data-results-container>
         <div id="blue_blanc"
              class="bp-quiz__grid bp-quiz__grid_result xs-offset animate__animated animate__fadeIn"
-             data-collection-src="https://ya.ru/"
+             data-collection-src="#"
              data-quiz-result>
           <div class="bp-quiz__grid-elem bp-quiz__title decor-star">
             <h3 class="headline-3">Ура! Коллекция подобрана</h3>
@@ -949,7 +975,7 @@
         </div>
         <div id="pera"
              class="bp-quiz__grid bp-quiz__grid_result xs-offset animate__animated animate__fadeIn"
-             data-collection-src="https://www.youtube.com/"
+             data-collection-src="#"
              data-quiz-result>
           <div class="bp-quiz__grid-elem bp-quiz__title decor-star">
             <h3 class="headline-3">Ура! Коллекция подобрана</h3>
@@ -975,7 +1001,7 @@
         </div>
         <div id="tan"
              class="bp-quiz__grid bp-quiz__grid_result xs-offset animate__animated animate__fadeIn"
-             data-collection-src="https://www.youtube.com/"
+             data-collection-src="#"
              data-quiz-result>
           <div class="bp-quiz__grid-elem bp-quiz__title decor-star">
             <h3 class="headline-3">Ура! Коллекция подобрана</h3>
@@ -1001,7 +1027,7 @@
         </div>
         <div id="teos"
              class="bp-quiz__grid bp-quiz__grid_result xs-offset animate__animated animate__fadeIn"
-             data-collection-src="https://www.youtube.com/watch?v=FXpIoQ_rT_c"
+             data-collection-src="#"
              data-quiz-result>
           <div class="bp-quiz__grid-elem bp-quiz__title decor-star">
             <h3 class="headline-3">Ура! Коллекция подобрана</h3>
@@ -1027,7 +1053,7 @@
         </div>
         <div id="chef_taste_of"
              class="bp-quiz__grid bp-quiz__grid_result xs-offset animate__animated animate__fadeIn"
-             data-collection-src="https://www.youtube.com/watch?v=FXpIoQ_rT_c"
+             data-collection-src="#"
              data-quiz-result>
           <div class="bp-quiz__grid-elem bp-quiz__title decor-star">
             <h3 class="headline-3">Ура! Коллекция подобрана</h3>
@@ -1053,7 +1079,7 @@
         </div>
         <div id="crouton"
              class="bp-quiz__grid bp-quiz__grid_result xs-offset animate__animated animate__fadeIn"
-             data-collection-src="https://www.youtube.com/watch?v=FXpIoQ_rT_c"
+             data-collection-src="#"
              data-quiz-result>
           <div class="bp-quiz__grid-elem bp-quiz__title decor-star">
             <h3 class="headline-3">Ура! Коллекция подобрана</h3>
@@ -1079,7 +1105,7 @@
         </div>
         <div id="blue_stone"
              class="bp-quiz__grid bp-quiz__grid_result xs-offset animate__animated animate__fadeIn"
-             data-collection-src="https://www.youtube.com/"
+             data-collection-src="#"
              data-quiz-result>
           <div class="bp-quiz__grid-elem bp-quiz__title decor-star">
             <h3 class="headline-3">Ура! Коллекция подобрана</h3>
@@ -1105,7 +1131,7 @@
         </div>
         <div id="sand_wind"
              class="bp-quiz__grid bp-quiz__grid_result xs-offset animate__animated animate__fadeIn"
-             data-collection-src="https://www.youtube.com/watch?v=FXpIoQ_rT_c"
+             data-collection-src="#"
              data-quiz-result>
           <div class="bp-quiz__grid-elem bp-quiz__title decor-star">
             <h3 class="headline-3">Ура! Коллекция подобрана</h3>
@@ -1134,6 +1160,7 @@
           <button class="btn-reset bp-button bp-button_alternative" data-quiz-restart>
             Пройти заново
           </button>
+          <!-- сюда по итогу подставится ссылка из data-collection-src -->
           <a href="#" target="_blank" class="btn-reset bp-button" data-quiz-details>
             Посмотреть коллекцию
           </a>
@@ -1151,15 +1178,15 @@
 
       <div class="bp-action-block__descr">
         <h3 class="headline-3 h3-offset">Консультация</h3>
-        <p class="title-offset">Наши специалисты помогут рассчитать необходимое количество посуды для вашего типа заведения, с учётом запаса и ваших потребностей</p>
+        <p class="title-offset bp-consult-bottom__text">Наши специалисты помогут рассчитать необходимое количество посуды для вашего типа заведения, с учётом запаса и ваших потребностей</p>
         <div class="bp-consult-bottom__group xs-offset">
           <div class="bp-consult-bottom__info">
             <p class="alternative-fs">Написать</p>
-            <a class="bp-link" href="mailto:test@test.ru">test@test.ru</a>
+            <a class="bp-link bp-consult-bottom__info-text" href="mailto:test@test.ru">test@test.ru</a>
           </div>
           <div class="bp-consult-bottom__info">
             <p class="alternative-fs">Позвонить</p>
-            <a class="bp-link" href="tel:88002002020">8 (800) 200-20-20</a>
+            <a class="bp-link bp-consult-bottom__info-text" href="tel:88002002020">8 (800) 200-20-20</a>
           </div>
         </div>
 

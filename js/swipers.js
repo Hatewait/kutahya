@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const swiperIntro = new Swiper('[data-intro-swiper]', {
     loop: true,
-    //releaseOnEdges: true,
-    //autoplay: true,
     speed: 900,
 
     breakpoints: {
@@ -56,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       breakpoints: {
         // when window width is >= 320px
         320: {
-          spaceBetween: 30,
+          spaceBetween: 20,
         },
 
         728: {
